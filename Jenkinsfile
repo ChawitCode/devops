@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        imageName = "hello-nginx"
+        imageName = "chawitcode/hello-nginx"
     }
     stages{
         stage("Prepare"){
@@ -19,6 +19,9 @@ pipeline {
                 sh "docker build -t ${env.imageName} ."
                 sh "docker tag  ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
-        } 
+        }
+        stage("push image") {
+            sh "docker push ${env.imageName}"
+        }
     }
 }
