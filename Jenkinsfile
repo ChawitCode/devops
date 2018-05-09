@@ -20,10 +20,17 @@ pipeline {
                 sh "docker tag  ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
-        stage("deploy"){
+       /* stage("deploy"){
             steps{
                 sshagent(['uat-server']){
                     sh "echo 'xxxx'"
+                }
+            }
+        }*/
+        tage("deploy"){
+            steps{
+                sshagent(['uat-server']){
+                    sh "ssh core@167.99.237.229 docker pull chawitcode/hello-nginx"
                 }
             }
         }
