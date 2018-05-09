@@ -22,6 +22,7 @@ pipeline {
         }
         stage("push image") {
             steps{
+            sh "docker login -u chawitcode -p weakPassword"  //weak acesss to server
             sh "docker push ${env.imageName}"
             }
         }
