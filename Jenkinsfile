@@ -21,7 +21,7 @@ pipeline {
             }
         }
         stage("push image") {
-            steps{
+            script{
            // sh "docker login -u chawitcode -p xxx"  //weak acesss to server
             //sh "docker push ${env.imageName}"
             docker.withRegistry(
