@@ -24,12 +24,12 @@ pipeline {
             script{
            // sh "docker login -u chawitcode -p xxx"  //weak acesss to server
             //sh "docker push ${env.imageName}"
-            docker.withRegistry(
+                docker.withRegistry(
                 'https://registry.hub.docker.com','docker-id'
-            ){
+                ){
                 def image = docker.build("${env.imageName}:1.${env.BUILD_NUMBER}")
                 image.push()
-            }
+                }
             }
         }
     }
