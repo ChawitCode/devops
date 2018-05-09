@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }*/
-        tage("deploy"){
+        stage("deploy"){
             steps{
                 sshagent(['uat-server']){
                     sh "ssh core@167.99.237.229 docker pull chawitcode/hello-nginx"
